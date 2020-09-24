@@ -2,10 +2,25 @@
 const router = require("express").Router() 
 const GuestController = require("../controllers/guestController")
 
-router.get("/", GuestController.getHomePage) 
-router.get("/delete/:productId", GuestController.getDeleteProcess) 
+const checkLogin = (req,res,next)=>{
+    console.log("middleware check login"); 
+    console.log(req.session.isLoggedIn,req.session.userRole,req.session.userId,req.session.userName);
+    // console.log(req.session);
+    if(!req.session.isLoggedIn){ 
+        res.redirect("/") 
+        // next()  
+    }else{
+        next()  
+    }
+    
+}
+// app.use(checkLogin)
+router.get("/",checkLogin, GuestController.getHomePage2) 
+router.get("/delete/:productId",checkLogin, GuestController.getDeleteProcess) 
 
-router.get("/productScan", GuestController.getScanPage)  
-router.get("/productScan/add?", GuestController.getScannedPage) 
+router.get("/productScan",checkLogin, GuestController.getScanPage)  
+router.get("/productScan/add?",checkLogin, GuestController.getScannedPage)  
+
+router.get("/logout",checkLogin, GuestController.getLogout)  
 
 module.exports = router
