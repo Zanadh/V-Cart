@@ -71,8 +71,13 @@
 	<script type="text/javascript">
 		var scanner = new Instascan.Scanner({ video: document.getElementById('preview'), scanPeriod: 5, mirror: false });
 		scanner.addListener('scan',function(content){
-			alert(content);
-			window.location.href=`homeGuest/add?id=${content}`;
+			// alert(content); 
+			if (confirm("Tambahkan kedalam keranjang ?")) {
+				window.location.href=`productScan/add?id=${content}`;
+			// 	// txt = "You pressed OK!";
+			} else {
+				txt = "You pressed Cancel!";
+			} 
 		});
 		Instascan.Camera.getCameras().then(function (cameras){
 			if(cameras.length>0){

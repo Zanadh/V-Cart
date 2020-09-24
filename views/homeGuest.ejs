@@ -53,7 +53,7 @@
             <h1 style="float: left;">V-Cart</h1>
 
             <a href="/homeGuest/logout">
-                <button style="float: right;">Log Out</button> 
+                <button style="float: right;">Exit</button> 
             </a> 
         </header> 
 
@@ -66,13 +66,16 @@
                     <th>Price</th>
                     <th>Actions</th>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>pespobent</td>
-                    <td>2</td>
-                    <td>15000</td>
-                    <td> add|delete</td>
-                </tr> 
+                <% for(let i=0;i<data.Products.length;i++){ %>  
+                    <% %>
+                    <tr>
+                        <td> <%= i+1 %> </td>
+                        <td><%= data.Products[i].name %></td>
+                        <td><%= data.helper.quantityCounter(data.Products[i].id, cartData)  %> </td> 
+                        <td><%= data.Products[i].price %></td>
+                        <td> add|delete</td>
+                    </tr> 
+                <%} %>
             </table>
         </div><br>
         <br>

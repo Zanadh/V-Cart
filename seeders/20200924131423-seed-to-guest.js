@@ -1,10 +1,4 @@
 'use strict';
-const fs = require('fs')
-const dataProduct = JSON.parse(fs.readFileSync('./data/product.json'))
-dataProduct.forEach(el => {
-  el.createdAt = new Date()
-  el.updatedAt = new Date()
-});
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -17,7 +11,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    return queryInterface.bulkInsert('Products', dataProduct)
+   return queryInterface.bulkInsert('Guests',[{name:'jono',createdAt: new Date(), updatedAt: new Date()}],{} )
   },
 
   down: (queryInterface, Sequelize) => {
@@ -27,6 +21,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    return queryInterface.bulkDelete('Products', null, {})
+   return queryInterface.bulkDelete('Guests',null,{} )
   }
 };
