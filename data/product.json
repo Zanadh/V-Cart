@@ -1,0 +1,98 @@
+[
+    {
+        "name": "Susu ULTRA FC 1L",
+        "type": "Minuman",
+        "stock": 100,
+        "price": 19300
+    },
+    {
+        "name": "Coca Cola 330ML",
+        "type": "Minuman",
+        "stock": 50,
+        "price": 7300
+    },
+    {
+        "name": "CAMEL PURPEL",
+        "type": "Rokok",
+        "stock": 70,
+        "price": 25000
+    },
+    {
+        "name": "Aqua Galon",
+        "type": "Minuman",
+        "stock": 70,
+        "price": 23000
+    },
+    {
+        "name": "Cokalt Cadbury",
+        "type": "Makanan",
+        "stock": 456,
+        "price": 18000
+    },
+    {
+        "name": "Teh Kotak",
+        "type": "Minuman",
+        "stock": 124,
+        "price": 3500
+    },
+    {
+        "name": "DJISAMSOE",
+        "type": "Rokok",
+        "stock": 100,
+        "price": "18000"
+    },
+    {
+        "name": "Indomie Kari Ayam",
+        "type": "Makanan",
+        "stock": "467",
+        "price": "2000"
+    },
+    {
+        "name": "French Fries 2000 Kentang Goreng 27g",
+        "type": "Makanan",
+        "stock": 100,
+        "price": 3100
+    },
+    {
+        "name": "Marjan Boudoin Syrup Melon 460ml",
+        "type": "Minuman",
+        "stock": 40,
+        "price": 23500
+    },
+    {
+        "name": "MAICIH Keripik Singkong Level 3 100g",
+        "type": "Makanan",
+        "stock": 70,
+        "price": 20300
+    },
+    {
+        "name": "POTABEE Potato Chips Seaweed 68g",
+        "type": "Makanan",
+        "stock": 178,
+        "price": 10700
+    },
+    {
+        "name": "Selamat Chocolish 40g",
+        "type": "Makanan",
+        "stock": 456,
+        "price": 6200
+    },
+    {
+        "name": "V-Soy Soya Bean Milk Multigain 300ml",
+        "type": "Minuman",
+        "stock": 37,
+        "price": 12900
+    },
+    {
+        "name": "SAMPOERNA Avolution Original 20",
+        "type": "Rokok",
+        "stock": 65,
+        "price": "31200"
+    },
+    {
+        "name": "Promina Bubur Tim Instan Ayam Tomat & Wortel 100g",
+        "type": "Makanan",
+        "stock": "35",
+        "price": "17000"
+    }
+]
