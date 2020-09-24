@@ -64,36 +64,29 @@
         </header>
 
         <div class="table-container">
-            <table border="1" style="width: 100%;text-align: center;">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Product Name</th>
-                        <th>Type</th>
-                        <th>Stock</th>
-                        <th>Price</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% data.forEach(el => { %>
-                    <tr>
-                        <td><%= el.id %></td>
-                        <td><%= el.name %></td>
-                        <td><%= el.type %></td>
-                        <td><%= el.stock %></td>
-                        <td><%= el.price %></td>
-                        <td>
-                            <div>
-                                <button onclick="location.href='/homeAdmin/edit/<%= el.id %>'">Edit</button>
-                                <button type="button"
-                                    onclick="location.href='/homeAdmin/delete/<%= el.id %>'">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <% }) %>
-                </tbody>
-            </table>
+            <center>
+                <h1>Add Product</h1>
+                <form action="/homeAdmin/edit/<%= data.id %>" method="POST">
+                    <div>
+                        <label for="">Name</label>
+                        <input type="text" name="name" id="" value="<%= data.name %>">
+                    </div><br>
+                    <div>
+                        <label for="">Type</label>
+                        <input type="text" name="type" id="" value="<%= data.type %>">
+                    </div><br>
+                    <div>
+                        <label for="">Stock</label>
+                        <input type="number" name="stock" id="" value="<%= data.stock %>">
+                    </div><br>
+                    <div>
+                        <label for="">price</label>
+                        <input type="text" name="price" id="" value="<%= data.price %>">
+                    </div><br>
+                    <button type="submit">Submit</button>
+                    <button type="button" onclick="location.href='/homeAdmin'">Cancel</button>
+                </form>
+            </center>
         </div><br>
         <br>
         <center>

@@ -7,6 +7,6 @@ router.get("/", Controller.getLogin)
 
 router.get("/loginPage", Controller.getLogin)
 router.use("/homeGuest", guestRoute)
-router.use("/homeAdmin", guestRoute)
+router.use("/homeAdmin", adminRoute)
 
 module.exports = router
