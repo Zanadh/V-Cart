@@ -1,7 +1,35 @@
-const {Guest } = require("../models/index")
+
+const {Guest,Admin } = require("../models/index")
 class Controller{ 
     static getLogin(req,res){
-        res.render("loginPage")
+        res.render("loginPage") 
+
+class Controller {
+    static homePage(req, res) {
+        res.render('loginPage')
+    }
+    static getLogin(req, res) {
+        // console.log(req.session);
+        res.render("adminLogin")
+    }
+    static postLogin(req, res) {
+        Admin.findOne({
+            where: {
+                username: req.body.username
+            }
+        })
+            .then(data => {
+                if(data.password === req.body.psw){
+                    req.session.isLogin  = true
+                    req.session.name = data.username
+                }
+                res.send(data)
+            })
+            .catch(err => {
+                res.send(err)
+            })
+        // res.send(req.body)
+ 
     }
     static getLogout(req,res){
         req.session.isLoggedIn = false
@@ -11,21 +39,5 @@ class Controller{
 
         res.redirect("/")
     }
-    static postGuestLogin(req,res){   
-        Guest.create(req.body)
-            .then((data)=>{ 
-                console.log(data); 
-                req.session.isLoggedIn = true
-                req.session.userRole = 'Guest'
-                req.session.userId = data.id
-                req.session.userName = data.name
-                // console.log("--------------");
-                // console.log(req.session);
-                res.redirect('/homeGuest')  
-
-            })
-            .catch(err=> res.send(err))
-    }
-}
 
 module.exports = Controller
