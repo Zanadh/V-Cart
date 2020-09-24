@@ -1,4 +1,4 @@
-const { Product } = require('../models/index')
+const { Product, Admin } = require('../models/index')
 
 
 class AdminController {
@@ -80,6 +80,16 @@ class AdminController {
             .catch(err => {
                 res.send(err)
             })
+    }
+    static logout(req, res) {
+        // req.session.destroy(err => {
+        //     if (err) {
+        //         res.dend(err)
+        //     } else {
+        //         res.redirect('/login')
+        //     }
+        // })
+        res.send(req.session)
     }
 }
 
