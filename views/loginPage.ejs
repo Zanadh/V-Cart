@@ -38,7 +38,7 @@
             width: 90%;
             height: 75%;
             border: solid black;
-            overflow: hidden;
+            /* overflow: hidden; */
         }
 
         footer {
@@ -59,10 +59,22 @@
         </header>
 
         <div class="login-container">
-            <center>
+            <center> 
+                <form action="/guestLogin" method="post" style="margin-top: 40%;"> 
+                    <% let guestName = `guest${Math.round(Math.random()*1000)}` %>
+
+                    <input type="text" name="name" value="<%= guestName %>">
+                    <!-- <button onclick="windo"> Random</button> <br><br> -->
+                    <button type="submit"> Start Shopping</button>  
+                    <script>
+                        function randomized(){
+                            console.log("aa");
+                        }
+                    </script>
+                </form> 
                 <a href="/homeGuest">
                     <button style="margin-top: 40%;"> Start Shopping</button>
-                </a>
+                </a> 
             </center>
         </div>
         <footer>

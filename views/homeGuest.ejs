@@ -52,8 +52,8 @@
         <header>
             <h1 style="float: left;">V-Cart</h1>
 
-            <a href="/homeGuest/logout">
-                <button style="float: right;">Log Out</button> 
+            <a href="logout">
+                <button style="float: right;">Exit</button> 
             </a> 
         </header> 
 
@@ -61,18 +61,21 @@
             <table border="1" style="width: 100%;text-align: center;">
                 <tr>
                     <th>No</th>
-                    <th>Product Name</th>
-                    <th>Quantity</th>
+                    <th>Product Name</th> 
                     <th>Price</th>
                     <th>Actions</th>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>pespobent</td>
-                    <td>2</td>
-                    <td>15000</td>
-                    <td> add|delete</td>
-                </tr> 
+                <% for(let i=0;i<data.length;i++){ %>  
+                    <% %>
+                    <tr>
+                        <td> <%= i+1 %> </td>
+                        <td><%= data[i].Product.name %></td> 
+                        <td><%= data[i].Product.price %></td>
+                        <td> add|
+                            <a href="homeGuest/delete/<%= data[i].Product.id %>"> <button >delete</button> </a>
+                        </td>
+                    </tr> 
+                <%} %>
             </table>
         </div><br>
         <br>
