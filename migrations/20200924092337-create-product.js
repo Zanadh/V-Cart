@@ -15,7 +15,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       stock: {
-        type: Sequelize.INTEGER
+        type: Sequelize.NUMBER
+      },
+      price: {
+        type: Sequelize.NUMBER
       },
       createdAt: {
         allowNull: false,
