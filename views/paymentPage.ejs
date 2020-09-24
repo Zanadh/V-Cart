@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     
+     
+    <title>V-Cart</title>
+    <style>
+        html, body{
+            height: 100%;
+            margin:0;
+            padding:0;
+        }
+
+        .container{ 
+			text-align: center;
+            margin: auto;
+            position: relative;;
+            border: solid green;
+            height: 100%;
+            width: 100%;
+            max-width:700px; 
+        }
+
+        .camera-container{
+            margin:auto;
+            width: 90%;
+            /* height: 500px; */
+            border: solid black; 
+        }
+        header{  
+            position: relative;
+            width: 100%; 
+            padding: 10px;
+            border-bottom: solid;
+            text-align: center;
+        } 
+        footer{
+            /* margin-bottom: 50px; */
+            width: 100%;
+            height: 90px;
+            border: solid;
+            bottom: 0; 
+            /* position:relative; */
+        }
+    </style>
+</head>
+<body> 
+	<div class="container"> 
+		<h1>Scan to Pay</h1>
+		<img src="<%= src %>" alt="">
+		<div class="camera-container"> 
+		</div><br><br>
+		<a href="/homeGuest"> <button> Back to Cart</button></a>
+	</div>  
+</body>
+</html>

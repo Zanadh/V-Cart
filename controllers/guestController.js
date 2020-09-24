@@ -1,5 +1,6 @@
 const { Product, Guest, Cart} = require("../models/index")
 const quantityCounter = require("../helpers/qtyCount")
+const qr = require("qrcode");
 
 class GuestController{ 
     static getHomePage2(req,res){ 
@@ -21,7 +22,7 @@ class GuestController{
         Guest.findByPk(req.session.userId,{include:[Product]})
             .then(data=> { 
                 // Cart.findAll({where:{GuestId:guestId}})
-                Cart.findAll({where:{GuestId:req.session.userId}})
+                Cart.findAll({where:{paymentStatus:false,GuestId:req.session.userId}})
                     .then(cartData =>{
                         // res.send({data,cartData}) 
                         data.helper = {quantityCounter}
@@ -56,13 +57,34 @@ class GuestController{
                 if(!data) { 
                     res.redirect("error?err=product+not+found")
                 }
-                return Cart.create({GuestId:req.session.userId,ProductId:data.id})
+                return Cart.create({GuestId:req.session.userId,ProductId:data.id,paymentStatus:false})
             })
             .then(()=>{
                 res.redirect("/homeGuest")
             })
             .catch(err=> res.send(err)) 
     }
+    static getPaymentPage(req,res){
+            let id = String(req.session.userId);
+            // id = '6'
+
+        if (!id) res.send("Empty Data!");
+        qr.toDataURL(id, (err, src) => {
+            if (err) res.send("Error occured");
+            console.log(src);
+            res.render("paymentPage", { src });
+        });
+        // qr.toString(id, (err, src) => {
+        //     if (err){
+        //         console.log(err);
+        //         res.send("Error occured"); 
+        //     } else{
+        //         console.log(src);
+        //         res.render("paymentPage", { src });
+        //     }
+        // });
+    }
+    
     static getLogout(req,res){
         req.session.isLoggedIn = false
         req.session.userRole = null

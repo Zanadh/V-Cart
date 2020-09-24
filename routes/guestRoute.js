@@ -15,9 +15,11 @@ const checkLogin = (req,res,next)=>{
 }
 // app.use(checkLogin)
 router.get("/",checkLogin, GuestController.getHomePage) 
+router.get("/payment",checkLogin, GuestController.getPaymentPage) 
 router.get("/delete/:productId",checkLogin, GuestController.getDeleteProcess) 
 
 router.get("/productScan",checkLogin, GuestController.getScanPage)  
+router.get("/productScan/add?",checkLogin, GuestController.getScannedPage)  
 router.get("/productScan/add?",checkLogin, GuestController.getScannedPage)  
 
 router.get("/logout",checkLogin, GuestController.getLogout)  

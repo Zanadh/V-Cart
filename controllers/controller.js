@@ -8,7 +8,7 @@ class Controller {
         // console.log(req.session);
         res.render("adminLogin")
     }
-    static postGuestLogin(req,res){  
+    static postGuestLogin(req,res){   
         Guest.create(req.body)
             .then((data)=>{  
 
