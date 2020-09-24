@@ -1,9 +1,5 @@
 
-const {Guest,Admin } = require("../models/index")
-class Controller{ 
-    static getLogin(req,res){
-        res.render("loginPage") 
-
+const {Guest,Admin } = require("../models/index") 
 class Controller {
     static homePage(req, res) {
         res.render('loginPage')
@@ -12,6 +8,20 @@ class Controller {
         // console.log(req.session);
         res.render("adminLogin")
     }
+    static postGuestLogin(req,res){  
+        Guest.create(req.body)
+            .then((data)=>{  
+
+                req.session.isLoggedIn = true 
+                req.session.userRole = 'guest' 
+                req.session.userId = data.id
+                req.session.userName = data.name
+                res.redirect("/homeGuest")
+            })
+            .catch(err=>{
+                res.send(err)
+            })
+    }
     static postLogin(req, res) {
         Admin.findOne({
             where: {
@@ -19,17 +29,24 @@ class Controller {
             }
         })
             .then(data => {
-                if(data.password === req.body.psw){
-                    req.session.isLogin  = true
-                    req.session.name = data.username
+                if(!data){
+                    res.redirect("/adminLogin")
                 }
-                res.send(data)
+                if(data.password === req.body.psw){
+                    req.session.isLoggedIn  = true
+                    req.session.userRole  = 'admin'
+                    req.session.userName = data.username 
+                    req.session.userId =  data.id
+                }else{
+                    res.render("error", {data:"wrong password"})
+                }
+                // res.send(req.session)
+                res.redirect("/homeAdmin")
             })
             .catch(err => {
                 res.send(err)
             })
-        // res.send(req.body)
- 
+        // res.send(req.body) 
     }
     static getLogout(req,res){
         req.session.isLoggedIn = false
@@ -40,4 +57,5 @@ class Controller {
         res.redirect("/")
     }
 
+}
 module.exports = Controller

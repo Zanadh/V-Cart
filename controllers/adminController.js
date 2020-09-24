@@ -1,4 +1,4 @@
-const { Product, Admin } = require('../models/index')
+const { Product, Admin ,Cart} = require('../models/index')
 
 
 class AdminController {
@@ -47,10 +47,20 @@ class AdminController {
             })
     }
     static getScanPage(req, res) {
-        res.send('')
+        res.render("scanPay")
     }
     static getScannedPage(req, res) {
-        res.send('')
+        // res.send(req.query)
+        Cart.update({paymentStatus:true},{where:{GuestId:req.query.id}})
+            .then(data=>{
+                console.log(data);
+                // res.send(data)
+                res.redirect("/homeAdmin")
+            })
+            .catch(err=>{
+                console.log(err);
+                res.send(err)
+            })
     }
     static editProduct(req, res) {
         Product.findOne({
@@ -81,15 +91,12 @@ class AdminController {
                 res.send(err)
             })
     }
-    static logout(req, res) {
-        // req.session.destroy(err => {
-        //     if (err) {
-        //         res.dend(err)
-        //     } else {
-        //         res.redirect('/login')
-        //     }
-        // })
-        res.send(req.session)
+    static getLogout(req,res){
+        req.session.isLoggedIn = false
+        req.session.userRole = null
+        req.session.userId = null
+        req.session.userName = null
+        res.redirect("/")
     }
 }
 

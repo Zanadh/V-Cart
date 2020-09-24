@@ -11,11 +11,10 @@ const checkLogin = (req,res,next)=>{
         // next()  
     }else{
         next()  
-    }
-    
+    } 
 }
 // app.use(checkLogin)
-router.get("/",checkLogin, GuestController.getHomePage2) 
+router.get("/",checkLogin, GuestController.getHomePage) 
 router.get("/delete/:productId",checkLogin, GuestController.getDeleteProcess) 
 
 router.get("/productScan",checkLogin, GuestController.getScanPage)  

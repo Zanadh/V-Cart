@@ -63,18 +63,16 @@
                     <th>No</th>
                     <th>Product Name</th> 
                     <th>Price</th>
-                    <th>Quantity</th>
                     <th>Actions</th>
                 </tr>
-                <% for(let i=0;i<data.Products.length;i++){ %>  
+                <% for(let i=0;i<data.length;i++){ %>  
                     <% %>
                     <tr>
                         <td> <%= i+1 %> </td>
-                        <td><%= data.Products[i].name %></td> 
-                        <td><%= data.Products[i].price %></td>
-                        <td><%= data.helper.quantityCounter(data.Products[i].id, cartData)  %> </td> 
-                        <td>
-                            <a href="homeGuest/delete/<%= data.Products[i].id %>"> <button >delete</button> </a>
+                        <td><%= data[i].Product.name %></td> 
+                        <td><%= data[i].Product.price %></td>
+                        <td> add|
+                            <a href="homeGuest/delete/<%= data[i].Product.id %>"> <button >delete</button> </a>
                         </td>
                     </tr> 
                 <%} %>

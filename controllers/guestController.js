@@ -3,21 +3,24 @@ const quantityCounter = require("../helpers/qtyCount")
 
 class GuestController{ 
     static getHomePage2(req,res){ 
-        Cart.findAll({
-            where:{GuestId:req.session.userId},
+        Cart.findAll({ 
             include:[Product]
         })
             .then(cartData =>{ 
-                res.render("homeGuest",{data:cartData})
+                // console.log(cartData[0].id);
+                res.send(cartData)
+                // res.render("homeGuest2",{data:cartData})
             }) 
             .catch(err=>{
                 res.send(err)
             }) 
     }
     static getHomePage(req,res){
-        // let guestId = 2 // testing guestid
+        // let guestId = 97 // testing guestid
+        // Guest.findByPk(guestId,{include:[Product]})
         Guest.findByPk(req.session.userId,{include:[Product]})
             .then(data=> { 
+                // Cart.findAll({where:{GuestId:guestId}})
                 Cart.findAll({where:{GuestId:req.session.userId}})
                     .then(cartData =>{
                         // res.send({data,cartData}) 
@@ -34,13 +37,14 @@ class GuestController{
             })  
     }
 
-    static getDeleteProcess(req,res){
-        res.send(req.params)
-        // Cart.findAll({where:{ProductId:req.params.productId}})
-        //     .then(data=>{
-                
-        //     })
-        // res.render("homeGuest")
+    static getDeleteProcess(req,res){ 
+        Cart.destroy({where:{ProductId:req.params.productId}}) 
+            .then(data=>{
+                res.redirect("/homeGuest")
+            })
+            .catch(err=>{
+                res.send(err)
+            }) 
     }
     static getScanPage(req,res){
         res.render("scanner") 
@@ -60,6 +64,10 @@ class GuestController{
             .catch(err=> res.send(err)) 
     }
     static getLogout(req,res){
+        req.session.isLoggedIn = false
+        req.session.userRole = null
+        req.session.userId = null
+        req.session.userName = null
         res.redirect("/")
     }
     
