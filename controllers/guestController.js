@@ -38,27 +38,8 @@ class GuestController{
             })  
     }
 
-    // static getDeleteProcess(req,res){  
-
-
-        // Cart.findOne({Where:{ProductId: req.params.productId,GuestId : req.session.userId} })
-        // .then(data=>{
-        //     // res.send(data)
-        //     return Cart.destroy(data)
-        // })
-        // .then(()=>{ res.redirect("/homeGuest")})
-        // .catch(err=>{res.send(err)})
-        // Cart.findOne({ProductId: req.params.productId},
-        //     { where:{GuestId : req.session.userId}
-        //   }).then(function (record) {
-        //     return record.destroy({ProductId: req.params.productId});
-        //   }).then(function (record) {
-        //     //   res.sendStatus(200);
-        //     res.redirect("/homeGuest")
-        //   }).catch(err=>{res.send(err)})
-    // }
     static getDeleteProcess(req,res){ 
-        Cart.destroy({where:{ProductId:req.params.productId,GuestId:req.session.userId}, limit:1}) 
+        Cart.destroy({where:{ProductId:req.params.id}}) 
             .then(data=>{
                 res.redirect("/homeGuest")
             })

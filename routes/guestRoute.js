@@ -17,7 +17,7 @@ const checkLogin = require("../middlewares/checkLogin")
 // app.use(checkLogin)
 router.get("/",checkLogin, GuestController.getHomePage) 
 router.get("/payment",checkLogin, GuestController.getPaymentPage) 
-router.get("/delete/:productId",checkLogin, GuestController.getDeleteProcess) 
+router.get("/delete/:id",checkLogin, GuestController.getDeleteProcess) 
 
 router.get("/productScan",checkLogin, GuestController.getScanPage)  
 router.get("/productScan/add?",checkLogin, GuestController.getScannedPage)  

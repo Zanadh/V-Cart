@@ -19,29 +19,37 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       type : DataTypes.STRING,
       allowNull: false,
-      notEmpty: {
-      msg: 'name cannot be null'
-      } 
+      validate:{ 
+        notEmpty: {
+          msg: 'name cannot be null'
+        } 
+      }
     },
     type: {
       type : DataTypes.STRING,
       allowNull: false,
-      notEmpty: {
-        msg: 'type cannot be null'
-      } 
+      validate:{  
+        notEmpty: {
+          msg: 'type cannot be null'
+        } 
+      }
     },
     stock: {
       type : DataTypes.INTEGER,
       allowNull: false,
-      isPlus(value) {
-        if(value<0) throw new Error('Please Input the right Stock!');
-      }  
+      validate:{  
+        isPlus(value) {
+          if(value<0) throw new Error('Please Input the right Stock!');
+        }  
+      }
     },
     price: {
       type : DataTypes.INTEGER,
       allowNull: false,
-      notEmpty: {
-        msg: 'Please input the right price!'
+      validate:{ 
+        notEmpty: {
+          msg: 'Please input the right price!'
+        }
       }
     },
   }, {

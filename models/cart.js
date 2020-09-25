@@ -14,7 +14,13 @@ module.exports = (sequelize, DataTypes) => {
       Cart.belongsTo(models.Guest,{foreignKey:'GuestId'})
       Cart.belongsTo(models.Product,{foreignKey:'ProductId'}) 
     }
+
+    // static composeId(pId,gId){
+    //   return
+    // }
   };
+
+
   Cart.init({
     GuestId: DataTypes.INTEGER,
     ProductId: DataTypes.INTEGER,

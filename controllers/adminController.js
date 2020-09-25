@@ -32,6 +32,7 @@ class AdminController {
                 res.redirect('/homeAdmin')
             })
             .catch(err => {
+                res.render("error",{data:err})
                 res.send(err)
             })
     }
