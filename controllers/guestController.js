@@ -47,6 +47,15 @@ class GuestController{
                 res.send(err)
             }) 
     }
+    // static getDeleteProcess(req,res){ 
+    //     Cart.destroy({where:{ProductId:req.params.id}}) 
+    //         .then(data=>{
+    //             res.redirect("/homeGuest")
+    //         })
+    //         .catch(err=>{
+    //             res.send(err)
+    //         }) 
+    // }
     static getScanPage(req,res){
         res.render("scanner") 
     }
