@@ -16,10 +16,34 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Product.init({
-    name: DataTypes.STRING,
-    type: DataTypes.STRING,
-    stock: DataTypes.INTEGER,
-    price: DataTypes.INTEGER
+    name: {
+      type : DataTypes.STRING,
+      allowNull: false,
+      notEmpty: {
+      msg: 'name cannot be null'
+      } 
+    },
+    type: {
+      type : DataTypes.STRING,
+      allowNull: false,
+      notEmpty: {
+        msg: 'type cannot be null'
+      } 
+    },
+    stock: {
+      type : DataTypes.INTEGER,
+      allowNull: false,
+      isPlus(value) {
+        if(value<0) throw new Error('Please Input the right Stock!');
+      }  
+    },
+    price: {
+      type : DataTypes.INTEGER,
+      allowNull: false,
+      notEmpty: {
+        msg: 'Please input the right price!'
+      }
+    },
   }, {
     sequelize,
     modelName: 'Product',

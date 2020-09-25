@@ -27,6 +27,8 @@ class AdminController {
         }
         Product.create(obj)
             .then(data => {
+                console.log(data);
+                // res.send(data)
                 res.redirect('/homeAdmin')
             })
             .catch(err => {

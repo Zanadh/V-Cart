@@ -10,8 +10,7 @@ class Controller {
     }
     static postGuestLogin(req,res){   
         Guest.create(req.body)
-            .then((data)=>{  
-
+            .then((data)=>{   
                 req.session.isLoggedIn = true 
                 req.session.userRole = 'guest' 
                 req.session.userId = data.id

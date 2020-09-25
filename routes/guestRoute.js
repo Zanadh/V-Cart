@@ -1,18 +1,19 @@
 
 const router = require("express").Router() 
 const GuestController = require("../controllers/guestController")
+const checkLogin = require("../middlewares/checkLogin")
 
-const checkLogin = (req,res,next)=>{
-    console.log("middleware check login"); 
-    console.log(req.session.isLoggedIn,req.session.userRole,req.session.userId,req.session.userName);
-    // console.log(req.session);
-    if(!req.session.isLoggedIn){ 
-        res.redirect("/") 
-        // next()  
-    }else{
-        next()  
-    } 
-}
+// const checkLogin = (req,res,next)=>{
+//     console.log("middleware check login"); 
+//     console.log(req.session.isLoggedIn,req.session.userRole,req.session.userId,req.session.userName);
+//     // console.log(req.session);
+//     if(!req.session.isLoggedIn){ 
+//         res.redirect("/") 
+//         // next()  
+//     }else{
+//         next()  
+//     } 
+// }
 // app.use(checkLogin)
 router.get("/",checkLogin, GuestController.getHomePage) 
 router.get("/payment",checkLogin, GuestController.getPaymentPage) 

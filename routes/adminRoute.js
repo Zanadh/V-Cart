@@ -1,17 +1,18 @@
 const router = require("express").Router()
 const AdminController = require("../controllers/adminController") 
+const checkLogin = require("../middlewares/checkLogin")
   
-const checkLogin = (req,res,next)=>{
-    console.log("middleware check login"); 
-    console.log(req.session.isLoggedIn,req.session.userRole,req.session.userId,req.session.userName);
-    // console.log(req.session);
-    if(!req.session.isLoggedIn){ 
-        res.redirect("/") 
-        // next()  
-    }else{
-        next()  
-    } 
-}
+// const checkLogin = (req,res,next)=>{
+//     console.log("middleware check login"); 
+//     console.log(req.session.isLoggedIn,req.session.userRole,req.session.userId,req.session.userName);
+//     // console.log(req.session);
+//     if(!req.session.isLoggedIn){ 
+//         res.redirect("/") 
+//         // next()  
+//     }else{
+//         next()  
+//     } 
+// }
 // router.get("/", AdminController.getHomePage)
 // router.get("/delete/:productId", AdminController.getDeleteProcess) 
  
